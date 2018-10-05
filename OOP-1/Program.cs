@@ -12,23 +12,26 @@ namespace OOP_1
                                     new Account1("Sleepy"),
                                     new Account1("Sneezy", 300)
                                    };
-
-            Console.WriteLine("Opening Report");
-            Console.WriteLine("--------------");
-            Reports(accounts);
+            
+            Reports(accounts, "Opening Report");
 
             // Do some transactions
             accounts[0].Withdraw(150);
-            accounts[1].Deposit(100);
-            accounts[2].Deposit(75);
+            Console.WriteLine($"{accounts[0].GetName()}: Withdraw $150");
 
-            Console.WriteLine("Closing Report");
-            Console.WriteLine("--------------");
-            Reports(accounts);
+            accounts[1].Deposit(100);
+            Console.WriteLine($"{accounts[1].GetName()}: Deposit $100");
+
+            accounts[2].Deposit(75);
+            Console.WriteLine($"{accounts[2].GetName()}: Deposit $75");
+
+            Reports(accounts, "\nClosing Report");
         }
 
-        static void Reports(Account1[] accts)
+        static void Reports(Account1[] accts, string heading)
         {
+            Console.WriteLine(heading);
+            Console.WriteLine("--------------");
             Console.WriteLine("List of accounts and balances:");
             foreach (var acct in accts)
                 Console.WriteLine(acct);
